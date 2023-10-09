@@ -97,6 +97,9 @@ def monthly_temperature_data_stations_metadata(location, file_name1, file_name2)
     msf = pd.read_csv(path, header = None,  names = metadata_names, dtype = metadata_dtype, delim_whitespace = True, decimal = ".", 
                      usecols = [i for i in range(5)])
     
+    #assign country labels
+    msf = msf.assign(COUNTRY = msf.ID.str[0:2]) 
+    
     return mdf, msf
 
 
